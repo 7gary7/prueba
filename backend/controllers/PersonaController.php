@@ -8,6 +8,8 @@ use app\models\PersonaSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\models\FormUpload;
+use yii\web\UploadedFile;
 
 /**
  * PersonaController implements the CRUD actions for Persona model.
@@ -28,6 +30,28 @@ class PersonaController extends Controller
             ],
         ];
     }
+
+    public function actionUpload() //Subir archivo
+ {
+  
+  $model = new Persona;
+  $msg = null;
+
+  if ($model->load(Yii::$app->request->isPost()))
+  {
+    
+   $model->file = UploadedFile::getInstances($model, 'file');
+
+   if ($model->file && $model->validate()) {
+    foreach ($model->file as $file) {
+     $file->saveAs('archivos/' . $file->baseName . '.' . $file->extension);
+     $msg = "<p><strong class='label label-info'>Enhorabuena, subida realizada con éxito</strong></p>";
+    }
+   }
+  }
+  return $this->render("upload", ["model" => $model, "msg" => $msg]);
+ }
+
 
     /**
      * Lists all Persona models.
@@ -66,10 +90,16 @@ class PersonaController extends Controller
     {
         $model = new Persona();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_persona]);
-        }
+        $model->file = UploadedFile::getInstances($model, 'file');
 
+   if ($model->file && $model->validate()&& $model->save()) {
+
+    foreach ($model->file as $file) {
+     $file->saveAs('archivos/' . $file->baseName . '.' . $file->extension);
+     $msg = "<p><strong class='label label-info'>Enhorabuena, subida realizada con éxito</strong></p>";
+    }
+    return $this->redirect(['view', 'id' => $model->id_persona]);
+   }
         return $this->render('create', [
             'model' => $model,
         ]);

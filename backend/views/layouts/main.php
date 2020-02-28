@@ -29,7 +29,7 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => Html::img('@web/images/LogoCD.png', ['alt'=>Yii::$app->name]),
+        'brandLabel' => Html::img('@web/images/LogoCD.png', ['alt'=>"Concejo deliberante"]),
         //'brandUrl' => Yii::$app->homeUrl,
         'brandOptions' => ['class' => 'myclass'],//options of the brand
         'options' => ['class' => 'navbar-inverse navbar-static-top']
