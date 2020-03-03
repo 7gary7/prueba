@@ -28,10 +28,30 @@ $this->params['breadcrumbs'][] = $this->title;
 
             //'id_persona',
             'nombre_persona',
+            /* ORIGINAL
+                [
+                    'attribute'=>'attachment',
+                    'format'=>'raw',
+                    'value' => function($data)
+                    {
+                        return
+                            Html::a('Download file', ['letter/download', 'id' => $data->id], ['class' => 'btn btn-primary']);
+                    }
+                ],*/
+            [
+                'attribute'=>'Ordenanza',
+                'format'=>'raw',
+                'value' => function($data)
+                {
+                    return
+                    Html::a('PDF', ['archivos/pdf_reporte.pdf'], ['class' => 'btn btn-primary']);
+                }
+                ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
+
 
 
 </div>
