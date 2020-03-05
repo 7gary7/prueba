@@ -6,6 +6,7 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\PersonaSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
+/* @var $dataOrd app\models\OrdenanzasSearch */
 
 $this->title = 'Personas';
 $this->params['breadcrumbs'][] = $this->title;
@@ -44,7 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => function($data)
                     {
                     return
-                    Html::a('PDF', ['archivos/pdf_reporte.pdf'], ['class' => 'btn btn-primary']);
+                    Html::a('PDF', ['archivos/'.$data->id_persona.'.pdf'], ['class' => 'btn btn-primary']);
                     }
                 ],
 
