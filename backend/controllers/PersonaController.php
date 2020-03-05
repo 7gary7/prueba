@@ -89,11 +89,11 @@ class PersonaController extends Controller
     public function actionCreate()
     {
         $model = new Persona();
-
+        $model->load(Yii::$app->request->post());
         $model->file = UploadedFile::getInstances($model, 'file');
 
    if ($model->file && $model->validate()&& $model->save()) {
-
+       
     foreach ($model->file as $file) {
      $file->saveAs('archivos/' . $file->baseName . '.' . $file->extension);
      $msg = "<p><strong class='label label-info'>Enhorabuena, subida realizada con éxito</strong></p>";

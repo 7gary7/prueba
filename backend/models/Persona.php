@@ -30,9 +30,9 @@ class Persona extends \yii\db\ActiveRecord
     {
         return [
            // [['id_persona'], 'required'],
-            [['id_persona'], 'integer'],
+            //[['id_persona'], 'integer'],
             [['nombre_persona'], 'string', 'max' => 45],
-            [['id_persona'], 'unique'],
+            //[['id_persona'], 'unique'],
             ['file', 'file', 
    'skipOnEmpty' => false,
    'uploadRequired' => 'No has seleccionado ningún archivo', //Error

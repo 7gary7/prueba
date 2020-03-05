@@ -42,10 +42,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute'=>'Ordenanza',
                 'format'=>'raw',
                 'value' => function($data)
-                {
+                    {
                     return
                     Html::a('PDF', ['archivos/pdf_reporte.pdf'], ['class' => 'btn btn-primary']);
-                }
+                    }
                 ],
 
             ['class' => 'yii\grid\ActionColumn'],
